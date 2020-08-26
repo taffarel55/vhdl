@@ -15,7 +15,7 @@ begin
 
    input <= J & K;		
    p: process(clock, reset) is
-   begin
+    begin
     if (reset='1') then state <= '0';
         elsif (rising_edge(clock)) then case (input) is when "11" => state <= not state;
         when "10" => state <= '1';
@@ -29,5 +29,3 @@ begin
    Q <= state;
    Qbar <= not state;
 end dentro;
-
---Teste, Vai rodar
