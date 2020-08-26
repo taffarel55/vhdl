@@ -29,3 +29,5 @@ begin
    Q <= state;
    Qbar <= not state;
 end dentro;
+
+--Teste, Vai rodar
