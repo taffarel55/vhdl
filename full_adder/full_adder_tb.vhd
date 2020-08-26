@@ -16,7 +16,7 @@ component full_adder is
 end component;
 signal a_in, b_in, c_in, s_out, c_out : std_logic;
 begin
-    dut: full_adder port map(a=>a_in, b=>b_in, c_i=>c_in, s=>s_out, c_o=>c_out);
+    dut: full_adder port map(a_in, b_in, c_in, s_out, c_out);
     process
     begin
         a_in <= '0';
