@@ -15,7 +15,7 @@ architecture rtl of full_adder is
 begin
     process(a,b,c_i) is
     begin
-      s <= (a xor b) xnor c_i;
+      s <= (a xor b) xor c_i;
       c_o <= (a and b) or ((a xor b) and c_i);
     end process;
 end rtl  ; -- rtl 
