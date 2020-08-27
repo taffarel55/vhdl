@@ -1,0 +1,10 @@
+v 4
+file . "full_adder_4bits.vhd" "b66df7d33a379bd796d1f95daf6d1e65a5d1f3fc" "20200827010627.107":
+  entity full_adder_4bits at 1( 0) + 0 on 13;
+  architecture rtl of full_adder_4bits at 13( 255) + 0 on 14;
+file . "full_adder_4bits_tb.vhd" "6b5503ed47aaa5d84b2213c2838001a1e033520a" "20200827011238.717":
+  entity full_adder_4bits_tb at 1( 0) + 0 on 17;
+  architecture testbench of full_adder_4bits_tb at 7( 100) + 0 on 18;
+file . "full_adder.vhd" "c2b51710edbf919747a2d2a2235ee4e8c1bcbac8" "20200827010704.947":
+  entity full_adder at 1( 0) + 0 on 15;
+  architecture rtl of full_adder at 14( 228) + 0 on 16;
