@@ -1,68 +1,40 @@
-
---EXEMPLO DE RAM
-
-
-LIBRARY IEEE;
-    USE IEEE.STD_LOGIC_1164.ALL;
-    USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-
-ENTITY RAM_TB IS 
+-- Testbench do Flip-Flop JK
+library IEEE;
+use IEEE.std_logic_1164.all;
+ 
+entity testbench is
 -- empty
-END ENTITY;
+end testbench; 
 
-ARCHITECTURE BEV OF RAM_TB IS
-
-SIGNAL DATAIN : STD_LOGIC_VECTOR(7 DOWNTO 0):="00000000";
-SIGNAL ADDRESS : STD_LOGIC_VECTOR(7 DOWNTO 0):="00000000";
-SIGNAL W_R : STD_LOGIC:='0';
-SIGNAL DATAOUT : STD_LOGIC_VECTOR(7 DOWNTO 0);
+architecture tb of testbench is
 
 -- DUT component
-COMPONENT RAM IS
-    PORT(DATAIN : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-         ADDRESS : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-         W_R : IN STD_LOGIC;
-         DATAOUT : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-         );
-END COMPONENT;
+component FF_JK is
+port(
+  clock  : in std_logic;
+  J, K   : in std_logic;
+  reset  : in std_logic;
+  Q, Qbar: out std_logic
+end component;
 
-BEGIN
+signal clock_in, J_in, K_in, reset_in, Q_out, Qbar_out : std_logic;
+
+begin
 
   -- Connect DUT
-  UUT: RAM PORT MAP(DATAIN, ADDRESS, W_R, DATAOUT);
+  DUT: FF_JK port map(clock_in, J_in, K_in, reset_in, Q_out, Qbar_out);
 
-  PROCESS
-  BEGIN
-    -- Write data into RAM
-    WAIT FOR 100 ns;
-    ADDRESS<="10000000";
-    DATAIN<="01111111";
-    WAIT FOR 100 ns;
-    ADDRESS<="01000000";
-    DATAIN<="10111111";
-    WAIT FOR 100 ns;
-    ADDRESS<="00100000";
-    DATAIN<="11011111";
-    WAIT FOR 100 ns;
-    ADDRESS<="00010000";
-    DATAIN<="11101111";
-    WAIT FOR 110 ns;
-
-    -- Read data from RAM
-    W_R<='1';
-    ADDRESS<="00000000";
-    WAIT FOR 100 ns;
-    ADDRESS<="10000000";
-    WAIT FOR 100 ns;
-    ADDRESS<="01000000";
-    WAIT FOR 100 ns;
-    ADDRESS<="00100000";
-    WAIT FOR 100 ns;
-    ADDRESS<="00010000";
-    WAIT FOR 100 ns;
-    
-    ASSERT FALSE REPORT "Test done. Open EPWave to see signals." SEVERITY NOTE;
-    WAIT;
-  END PROCESS;
-
-END BEV;
+  process
+  begin
+    reset_in <= '1';
+    j_in <= '0';
+    q_in <= '0';
+    clock_in <= '0';
+    wait for 1 ns;
+    clock_in <= '1';
+    wait for 1 ns;
+    clock_in <= '0';
+    wait for 1 ns;
+    wait;
+  end process;
+end tb;
