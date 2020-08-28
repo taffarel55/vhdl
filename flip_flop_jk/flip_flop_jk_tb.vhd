@@ -14,7 +14,7 @@ port(
   clock  : in std_logic;
   J, K   : in std_logic;
   reset  : in std_logic;
-  Q, Qbar: out std_logic
+  Q, Qbar: out std_logic);
 end component;
 
 signal clock_in, J_in, K_in, reset_in, Q_out, Qbar_out : std_logic;
@@ -28,7 +28,7 @@ begin
   begin
     reset_in <= '1';
     j_in <= '0';
-    q_in <= '0';
+    k_in <= '0';
     clock_in <= '0';
     wait for 1 ns;
     clock_in <= '1';
