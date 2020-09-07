@@ -1,16 +1,16 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity FF_JK is 
+entity flip_flop_jk is 
    port (
       clock  : in std_logic;
       J, K   : in std_logic;
       reset  : in std_logic;
       Q, Qbar: out std_logic
    );
-end FF_JK;
+end flip_flop_jk;
 
-architecture dentro of FF_JK is
+architecture dentro of flip_flop_jk is
    signal state: std_logic;
    signal input: std_logic_vector(1 downto 0);
 begin

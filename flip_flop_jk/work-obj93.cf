@@ -1,0 +1,7 @@
+v 4
+file . "ff_tb.vhd" "89086ec82f07614db61071c9f7e4d602d9d4ee26" "20200907191357.543":
+  entity ff_tb at 1( 0) + 0 on 15;
+  architecture tb of ff_tb at 7( 73) + 0 on 16;
+file . "flip_flop_jk.vhd" "a18c8f113b8c9a4924dbcd75fb69b892fc799d0a" "20200907190646.934":
+  entity flip_flop_jk at 1( 0) + 0 on 13;
+  architecture dentro of flip_flop_jk at 13( 219) + 0 on 14;
